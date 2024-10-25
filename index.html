@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h2>Investments</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Shares</th>
+                <th>Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contract in contracts %}
+            <tr>
+                <td>{{ contract.symbol }}</td>
+                <td>{{ contract.name }}</td>
+                <td>${{ contract.price}}</td>
+                <td>{{ contract.total_shares }}</td>
+                <td>${{ contract.price * contract.total_shares }}</td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+        </table>
+        <h4>Total Value: {{ totalvalue }}</h4>
+        <h4>Cash: {{ cash }}</h4>
+{% endblock %}
